@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="lib/jquery-3.1.1.js"></script>
+  <script src="lib/underscore.js"></script>
+  <script src="lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+  // 1. Modelコンポーネント定義
+  var TimeModel = Backbone.Model.extend({
+    // 属性の初期値の設定
+    defaults: function () {
+      return {
+        date: new Date('2016/11/11')
+      };
+    }
+  });
+
+  // 2. Modelインスタンス生成
+  var model = new TimeModel;
+
+  // 3. View コンポーネント定義（状態描画処理）
+  var TimeView = Backbone.View.extend({
+    // 描画処理（オーバライド）
+    render: function () {
+      // 状態の参照
+      var date = this.model.get('date');
+      // 画面反映
+      this.$el.html('現在時刻 ' + date.toLocaleTimeString());
+    },
+
+    // 初期化処理（オーバライド）
+    initialize: function () {
+      // 状態変更イベント監視（描画処理再実行）
+      this.listenTo(this.model, 'change', function () {
+        this.render();
+      });
+    }
+  });
+
+  // 4. View インスタンス生成（画面要素、状態インスタンス注入）
+  var view = new TimeView({
+    el: '#root',
+    model: model
+  });
+
+  // 5. 描画処理実行
+  view.render();
+
+  // 6. イベント発生（状態更新）
+  // タイマーイベント（１秒間隔実行）
+  setInterval(function () {
+    // 状態更新
+    model.set('date', new Date);
+  }, 1000);
+
+  // 7. 状態変更イベント監視（描画処理再実行）
+  // view.listenTo(view.model, 'change', function () {
+  //  view.render();
+  // });
+
+</script>
+
+</body>
+</html>

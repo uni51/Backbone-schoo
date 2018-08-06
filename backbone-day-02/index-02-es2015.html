@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="lib/jquery-3.1.1.js"></script>
+  <script src="lib/underscore.js"></script>
+  <script src="lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+  // Modelコンポーネント定義
+  class TimeModel extends Backbone.Model {
+    defaults() {
+      return {
+        date: new Date('2016/11/11')
+      };
+    }
+  }
+
+  const model = new TimeModel;
+
+  // View コンポーネント定義（状態描画処理）
+  class TimeView extends Backbone.View {
+    constructor(props) {
+      super(props);
+      this.listenTo(this.model, 'change', () => this.render());
+    }
+
+    render() {
+      const date = this.model.get('date');
+      this.$el.html(`現在時刻 ${date.toLocaleTimeString()}`);
+    }
+  }
+
+  const view = new TimeView({
+    el: '#root',
+    model: model
+  });
+
+  view.render();
+
+  setInterval(() => model.set('date', new Date), 1000);
+</script>
+
+</body>
+</html>

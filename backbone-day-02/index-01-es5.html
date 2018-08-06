@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="lib/jquery-3.1.1.js"></script>
+  <script src="lib/underscore.js"></script>
+  <script src="lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+  var TimeModel = Backbone.Model.extend({
+    defaults: function () {
+      return {
+        date: new Date('2016/11/11')
+      };
+    }
+  });
+
+  var model = new TimeModel;
+
+  var TimeView = Backbone.View.extend({
+    render: function () {
+      var date = this.model.get('date');
+      this.$el.html('現在時刻 ' + date.toLocaleTimeString());
+    },
+    initialize: function () {
+      this.listenTo(this.model, 'change', function () {
+        this.render();
+      });
+    }
+  });
+
+  var view = new TimeView({
+    el: '#root',
+    model: model
+  });
+
+  view.render();
+
+  setInterval(function () {
+    model.set('date', new Date);
+  }, 1000);
+</script>
+
+</body>
+</html>

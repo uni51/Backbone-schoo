@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="lib/jquery-3.1.1.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+  // タイマーイベント（1秒間間隔）
+  setInterval(function () {
+    // 状態の更新
+    var date = new Date;
+    var content = '現在時刻 ' + date.toLocaleTimeString();
+
+    // 状態の描画
+    var $el = $('#root');
+    $el.html(content);
+  }, 1000);
+</script>
+
+</body>
+</html>

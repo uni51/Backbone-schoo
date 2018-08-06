@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="lib/jquery-3.1.1.js"></script>
+  <script src="lib/underscore.js"></script>
+  <script src="lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+  // Modelコンポーネント定義
+  class CountModel extends Backbone.Model {
+    defaults() {
+      return {
+        like: 0
+      };
+    }
+  }
+
+  // View コンポーネント定義（状態描画処理）
+  class CountView extends Backbone.View {
+    constructor(props) {
+      super(props);
+      this.listenTo(this.model, 'change', () => this.render());
+    }
+
+    render() {
+      const like = this.model.get('like');
+
+      const content = `
+        <button class="btn-like">Like</button>
+        <span>${like}</span>
+        `;
+
+      this.$el.html(content);
+    }
+
+    get events() {
+      return {
+        'click .btn-like': () => {
+          const value = this.model.get('like');
+          this.model.set('like', value + 1);
+        }
+      };
+    }
+  }
+
+
+  const view = new CountView({
+    el: '#root',
+    model: new CountModel
+  });
+
+  view.render();
+</script>
+
+</body>
+</html>

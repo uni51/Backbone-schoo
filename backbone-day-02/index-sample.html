@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="lib/jquery-3.1.1.js"></script>
+  <script src="lib/underscore.js"></script>
+  <script src="lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/javascript">
+function useLet(count) {
+  let temp = 0;
+  // while文内がブロック
+  while ( count < 10 ) {
+    let temp = ++count;
+  }
+  alert(temp);
+}
+useLet(1);
+</script>
+
+</body>
+</html>
