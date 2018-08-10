@@ -2359,7 +2359,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Routerクラス（MVCのController的な役割を果たす）
+
 
 var MainRouter = function (_Router) {
   _inherits(MainRouter, _Router);
@@ -2367,6 +2368,7 @@ var MainRouter = function (_Router) {
   function MainRouter(props) {
     _classCallCheck(this, MainRouter);
 
+    // 属性初期値
     var _this = _possibleConstructorReturn(this, (MainRouter.__proto__ || Object.getPrototypeOf(MainRouter)).call(this, props));
 
     _this.view = null;
@@ -2376,23 +2378,30 @@ var MainRouter = function (_Router) {
 
   _createClass(MainRouter, [{
     key: 'doTask',
+
+
+    // タスク一覧画面表示
     value: function doTask() {
       var view = new _ListView2.default({
         collection: this.collection
       });
       view.render();
-      this.setView(view);
+      this.setView(view); // View切替実行
     }
   }, {
     key: 'setView',
     value: function setView(view) {
+      // 前View削除
       if (this.view instanceof _backbone.View) {
         this.view.remove();
       }
       this.view = view;
       var el = this.view.el;
-      (0, _backbone.$)('#root').html(el);
+      (0, _backbone.$)('#root').html(el); // View描画結果挿入
     }
+
+    // 為替レート画面表示
+
   }, {
     key: 'doRate',
     value: function doRate(date) {
@@ -2401,6 +2410,7 @@ var MainRouter = function (_Router) {
       var view = new _RateView2.default({
         model: model
       });
+      // ajax検索実行
       model.fetch({
         data: {
           access_key: model.get('access_key'),
@@ -2415,6 +2425,7 @@ var MainRouter = function (_Router) {
     get: function get() {
       var _this2 = this;
 
+      // routes定義
       return {
         'rate/:date': function rateDate(date) {
           return _this2.doRate(date);
