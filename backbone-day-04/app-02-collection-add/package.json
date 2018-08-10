@@ -1,0 +1,23 @@
+{
+  "name": "app-02-collection-add",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "backbone": "^1.3.3",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015": "*",
+    "handlebars": "*",
+    "handlebars-loader": "*",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  }
+}
