@@ -1,0 +1,21 @@
+<form class="form-task">
+  <input class="text-title" type="text" placeholder="タスク名" required>
+  <button>登録</button>
+</form>
+
+<hr>
+{{#unless this}}
+  タスク未登録
+{{/unless}}
+
+<ol>
+  {{#each this}}
+    <li>
+      {{title}}
+      <button class="btn-remove"
+              data-id="{{id}}">
+        削除
+      </button>
+    </li>
+  {{/each}}
+</ol>
