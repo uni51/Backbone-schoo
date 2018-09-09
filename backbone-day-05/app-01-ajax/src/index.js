@@ -1,8 +1,10 @@
 import RateModel from './model/RateModel';
 import RateView from './view/RateView';
 
+// Model インスタンス生成
 const model = new RateModel;
 
+// View インスタンス生成
 new RateView({
   model: model,
   el: '#root'

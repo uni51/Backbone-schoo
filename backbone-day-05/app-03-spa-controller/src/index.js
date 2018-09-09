@@ -30,6 +30,7 @@ class MainRouter extends Router {
     this.setView(view); // View切替実行
   }
 
+  // 描画結果の切り替え
   setView(view) {
     // 前View削除
     if (this.view instanceof View) {
