@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>underscore.js</title>
+</head>
+<body>
+    <script src="underscore-min.js"></script>
+    <script>
+        (function() {
+            var x;
+            // x = _.shuffle([2, 8 , 10, 3]);   zzzzzz// 関数的に記載（こちらの方が一般的）
+            x = _([2, 8, 10, 3]).shuffle();   // オブジェクト指向的な記載
+            console.log(x);
+        })();
+    </script>
+</body>
+</html>

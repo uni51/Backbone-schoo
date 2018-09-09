@@ -1,0 +1,23 @@
+body {
+	color:#999;
+	padding:5px 20px;
+	line-height: 150%;
+}
+p {
+	font-size:18pt;
+}
+
+.msg {
+	padding:5px 10px;
+}
+
+th {
+	border:1px solid #aaa;
+	color:white;
+	background: darkgray;
+	padding:0px 10px;
+}
+td {
+	border:1px solid #aaa;
+	padding:0px 10px;
+}

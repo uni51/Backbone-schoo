@@ -1,0 +1,12 @@
+body {
+	color:#999;
+	padding:5px 20px;
+	line-height: 150%;
+}
+p {
+	font-size:18pt;
+}
+
+.msg {
+	padding:5px 10px;
+}
