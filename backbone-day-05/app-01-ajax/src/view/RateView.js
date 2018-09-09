@@ -4,7 +4,7 @@ import RateTmpl from '../template/RateTmpl.hbs';
 export default class RateView extends View {
   constructor(props) {
     super(props);
-    // Model 同期イベント監視 → 最新状態の再描画
+    // HTTPレスポンス受信・Model 同期イベント監視 → 最新状態の再描画
     this.listenTo(this.model,'sync',()=>this.render());
   }
 
