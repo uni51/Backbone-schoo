@@ -9,32 +9,15 @@ var Contact = Backbone.Model.extend({
   },
 
   select: function() {
-    
+    // 選択中フラグを立てる。連絡先データではないので、属性ではなく単なるプロパティとして扱う
+    this.selected = true;
+    // 独自イベントのselectを発生させる
+    // triger()メソッドの第2引数以降の指定は、コールバック関数が受け取れるパラメータとなる
+    this.trigger('select', this.selected);
   }
 
 });
 
+// Contactインスタンスを生成して、select()メソッドを呼び出す
 var contact = new Contact();
-
-var onChange = function() {
-  console.log('属性が変更されました_custom');
-}
-
-var onChangeEmail = function() {
-  console.log('email属性が変更されました_custom');
-}
-
-contact.on('change', onChange);
-contact.on('change:email', onChangeEmail);
-
-// contact.off();  // 引数なし=すべてのイベント
-// contact.off('change');
-contact.off('change', onChange); // 実行結果はこの場合のもの
-
-// Contactが初期化されました_initial
-contact.set('firstName', 'Alice');
-
-// email属性が変更されました_initial
-// email属性が変更されました_custom
-// Contactが初期化されました_initial
-contact.set('email', 'henderson@example.com');
+contact.select();
