@@ -1,9 +1,10 @@
-// addイベントの監視
+// Underscore.jsのfilter()機能
 var Contact = Backbone.Model.extend({
   defaults: {
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    age: ''
   }
 });
 
@@ -27,12 +28,19 @@ contactCollection.add([
   {
     firstName: 'Alice',
     lastName: 'Henderson',
-    email: 'alice@example.com'
+    email: 'alice@example.com',
+    age: '23'
   }, {
     firstName: 'Bob',
     lastName: 'Tiger',
-    email: 'bob@example.com'
+    email: 'bob@example.com',
+    age: '40'
   }
 ]);
 
-console.log(JSON.stringify(contactCollection, null, 2));
+ var filtered = contactCollection.filter(function(contact) {
+  // Contactモデルがage（年齢）属性を持っていたとして、その年齢が30際以上のモデルだけを抽出した配列を返す
+  return contact.get('age') >= 30;
+});
+
+console.log(JSON.stringify(filtered, null, 2));
