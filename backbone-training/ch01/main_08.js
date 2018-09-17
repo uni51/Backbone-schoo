@@ -1,4 +1,4 @@
-// イベント監視の解除
+// 独自イベントの発生
 var Contact = Backbone.Model.extend({
 
   initialize: function() {
