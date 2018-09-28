@@ -18,7 +18,7 @@ App.Container = Backbone.View.extend({
     }
     // ビューに紐付けられているイベントの監視をすべて解除する
     view.off();
-    // ビューの削除
+    // ビューの削除（DOM要素の削除と、ビューのインスタンスが監視しているイベントの解除）
     view.remove();
   },
 

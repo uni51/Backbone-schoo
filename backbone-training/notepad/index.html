@@ -36,6 +36,8 @@
       <div id="header-container"></div>
       <div id="main-container"></div>
     </div>
+
+    <!-- 親ビューのテンプレート -->
     <script type="text/template" id="noteListView-template">
       <!-- メモ一覧を表示するtable要素のためのテンプレート。table要素自体はBackbone.Viewが生成する -->
       <thead>
@@ -45,7 +47,7 @@
       <tbody class="js-noteListItemView-container"></tbody>
     </script>
 
-
+    <!-- 子ビューのテンプレート -->
     <script type="text/template" id="noteListItemView-template">
       <!-- 個々のメモ情報を表示するtr要素のためのテンプレート。tr要素自体はBackbone.Viewが生成する -->
       <td>

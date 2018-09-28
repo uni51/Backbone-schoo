@@ -1,4 +1,5 @@
 // js/note_list_item.js
+// 個々のメモを表す子ビュー
 
 App.NoteListItemView = Backbone.View.extend({
 

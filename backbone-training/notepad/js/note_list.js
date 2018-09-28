@@ -1,4 +1,5 @@
 // js/note_list.js
+// メモ一覧の親ビュー
 
 App.NoteListView = Backbone.View.extend({
 
@@ -35,7 +36,6 @@ App.NoteListView = Backbone.View.extend({
       title = note.get('title');
       body = note.get('body');
       $insertionPoint.append(itemView.render().$el);
-      // return itemView;
     }, this);
   }
 });
