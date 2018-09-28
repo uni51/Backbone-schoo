@@ -33,8 +33,6 @@ App.NoteListView = Backbone.View.extend({
       var itemView = new App.NoteListItemView({
         model: note
       });
-      title = note.get('title');
-      body = note.get('body');
       $insertionPoint.append(itemView.render().$el);
     }, this);
   }

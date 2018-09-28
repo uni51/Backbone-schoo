@@ -13,8 +13,10 @@
   <script src="./js/app.js"></script>
   <script src="./js/models.js"></script>
   <script src="./js/container.js"></script>
-  <script src="./js/note_list_item.js"></script>
   <script src="./js/note_list.js"></script>
+  <script src="./js/note_list_item.js"></script>
+  <script src="./js/note_detail.js"></script>
+  <script src="./js/router.js"></script>     
 </head>
 <body>
 
@@ -51,7 +53,7 @@
     <script type="text/template" id="noteListItemView-template">
       <!-- 個々のメモ情報を表示するtr要素のためのテンプレート。tr要素自体はBackbone.Viewが生成する -->
       <td>
-        <a href="#">
+        <a href="#notes/<%= id %>">
           <%= title %>
         </a>
       </td>
@@ -67,6 +69,12 @@
           </a>
         </div>
       </td>
+    </script>
+
+    <!-- メモの詳細画面用のテンプレート -->
+    <script type="text/template" id="noteDetailView-template">
+      <h2><%= title %></h2>
+      <p><%= body %></p>
     </script>
 </body>
 </html>

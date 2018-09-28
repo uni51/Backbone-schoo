@@ -53,5 +53,8 @@ $(function() {
     // 表示領域にメモ一覧を表示する
     // App.mainContainerのshow()は受け取ったビューのrender()を実行して、DOM要素を自身のelに挿入する
     App.mainContainer.show(noteListView);
+
+    App.router = new App.Router();
+    Backbone.history.start();
   });
 });
