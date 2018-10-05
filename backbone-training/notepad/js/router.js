@@ -13,7 +13,7 @@ App.Router = Backbone.Router.extend({
     });
     id = note.get('id');
     title = note.get('title');
-    body = note.get('body');    
+    body = note.get('body');
     App.mainContainer.show(noteDetailView);
   }
 });
