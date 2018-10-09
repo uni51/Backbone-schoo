@@ -16,6 +16,7 @@
   <script src="./js/note_list.js"></script>
   <script src="./js/note_list_item.js"></script>
   <script src="./js/note_detail.js"></script>
+  <script src="./js/note_control.js"></script>
   <script src="./js/router.js"></script>
 </head>
 <body>
@@ -39,6 +40,22 @@
       <div id="main-container"></div>
     </div>
 
+    <!-- [New Note]ボタンのテンプレート -->
+    <script type="text/template" id="noteControlView-template">
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- 後で検索欄を置く -->
+        </div>
+
+        <div class="col-sm-6 text-right">
+          <a href="#new" class="btn btn-primary btn-small js-new">
+            <span class="glyphicon glyphicon-plus"></span>
+            New Note
+          </a>
+        </div>
+      </div>
+    </script>
+    
     <!-- 親ビューのテンプレート -->
     <script type="text/template" id="noteListView-template">
       <!-- メモ一覧を表示するtable要素のためのテンプレート。table要素自体はBackbone.Viewが生成する -->
@@ -76,5 +93,6 @@
       <h2><%= title %></h2>
       <p><%= body %></p>
     </script>
+
 </body>
 </html>
