@@ -36,6 +36,10 @@ $(function() {
     el: '#main-container'
   });
 
+  App.headerContainer = new App.Container({
+    el: '#header-container'
+  });
+
   // NoteCollectionコレクションのデータを受信する
   // (Backbone.LocalStorageを使用しているので、ブラウザのローカルストレージから読み込む)
   App.noteCollection.fetch().then(function(notes) {
