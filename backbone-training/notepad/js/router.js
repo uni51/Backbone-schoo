@@ -3,6 +3,7 @@
 App.Router = Backbone.Router.extend({
   routes: {
     'notes/:id': 'showNoteDetail',
+    'new': 'showNewNote',
     '*actions': 'defaultRoute'
   },
 
@@ -42,6 +43,25 @@ App.Router = Backbone.Router.extend({
     App.mainContainer.show(noteDetailView);
 
     // メモの詳細画面ではボタンを消したいので、App.headerContainerのemptyメソッドを呼び出してビューを破棄しておく
+    App.headerContainer.empty();
+  },
+
+  showNewNote: function() {
+    var self = this;
+    var noteFormView = new App.NoteFormView({
+      model: new App.Note()
+    });
+    title = '';
+    body = '';
+
+    noteFormView.on('submit:form', function(attrs) {
+      App.noteCollection.create(attrs);
+
+      self.showNoteList();
+      self.navigate('notes');
+    });
+
+    App.mainContainer.show(noteFormView);
     App.headerContainer.empty();
   }
 });
