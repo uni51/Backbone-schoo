@@ -48,6 +48,8 @@ App.Router = Backbone.Router.extend({
 
   showNewNote: function() {
     var self = this;
+    // テンプレートの<%= title %>などの出力を空文字列で空欄にしておくため、新規に生成したNoteモデルを渡して
+    // NoteFormViewを初期化する
     var noteFormView = new App.NoteFormView({
       model: new App.Note()
     });
@@ -55,13 +57,17 @@ App.Router = Backbone.Router.extend({
     body = '';
 
     noteFormView.on('submit:form', function(attrs) {
+      // submit:formイベントで受け取ったフォームの入力値をNoteCollectionコレクションのcreate()に渡して
+      // Noteモデルの新規作成と保存を行う
       App.noteCollection.create(attrs);
 
+      // モデル一覧を表示してルートを#notesに戻す
       self.showNoteList();
       self.navigate('notes');
     });
 
     App.mainContainer.show(noteFormView);
+    // [New Note]ボタンはこの画面では必要ないので、ビューを破棄しておく
     App.headerContainer.empty();
   }
 });
